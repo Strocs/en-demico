@@ -1,0 +1,17 @@
+---
+import { SITE } from "@data/SITE";
+
+interface Props {
+  size?: string;
+}
+
+const { size = "max-w-[30vh]" } = Astro.props;
+---
+
+<div class:list={["grid grid-cols-6 h-3 mx-auto my-2", size]}>
+  {
+    SITE.primary_colors.map((color) => (
+      <span class="w-full h-full" style={`background-color:${color};`} />
+    ))
+  }
+</div>

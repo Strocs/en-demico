@@ -1,0 +1,32 @@
+---
+import ByStrocs from "./ui/ByStrocs.astro";
+
+interface Props {
+  class?: string;
+}
+const { class: customStyles } = Astro.props;
+---
+
+<footer
+  class:list={[
+    customStyles,
+    "text-primary flex flex-col items-center gap-[1.8vh] justify-between w-full",
+  ]}
+>
+  <div>
+    <p class="text-center mb-[1vh] font-medium text-[2vh]">
+      Proyecto realizado por:
+    </p>
+    <ul class="flex gap-[6vh]">
+      <li class="w-[6vh] h-[6vh] bg-primary rounded-full"></li>
+      <li class="w-[6vh] h-[6vh] bg-primary rounded-full"></li>
+      <li class="w-[6vh] h-[6vh] bg-primary rounded-full"></li>
+      <li class="w-[6vh] h-[6vh] bg-primary rounded-full"></li>
+      <li class="w-[6vh] h-[6vh] bg-primary rounded-full"></li>
+    </ul>
+  </div>
+  <div class="text-center">
+    <p class="text-[1.8vh]">Haz scroll para navegar</p>
+    <ByStrocs color="text-primary" class="text-[1.8vh]" />
+  </div>
+</footer>

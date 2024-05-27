@@ -1,0 +1,17 @@
+---
+interface Props {
+  font?: string;
+  color?: string;
+  class?: string;
+}
+
+const { font, color, class: customStyle } = Astro.props;
+---
+
+<p class:list={[font, color, customStyle, "whitespace-nowrap"]}>
+  Desarrollado por <a
+    href="https://strocs.dev"
+    target="_blank"
+    class="hover:text-blue-600 font-medium duration-150">StrocsDev</a
+  >
+</p>
