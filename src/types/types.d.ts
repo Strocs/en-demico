@@ -16,7 +16,6 @@ export interface Place {
   longitude: number,
   color: string,
   image: string,
-  icon: () => JSX.Element,
   video_id: string,
   illustrator: Artist,
 }
@@ -24,12 +23,3 @@ export interface Place {
 export interface Places {
   [key: string]: Place
 }
-
-
-export interface Zone {
-  zone_id: string
-  zone: string
-  places: Place[]
-}
-
-export type Zones = Zone[]

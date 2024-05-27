@@ -4,32 +4,36 @@ import ColorsBar from "./ui/ColorsBar.astro";
 import { Image } from "astro:assets";
 import LogoEndemico from "./icons/LogoEndemico.astro";
 import { ARTISTS } from "@data/ARTISTS";
-import Footer from "./Footer.astro";
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/*.{jpeg,jpg,png,gif}"
 );
 ---
 
-<section class="w-full h-screen swiper-slide grid bg-secondary p-[2.8vh]">
-  <header class="mx-auto text-center mb-[2vh] w-[40vh] text-primary">
+<section
+  class="w-full h-screen swiper-slide flex flex-col space-y-4 justify-between bg-secondary p-[2.8vh]"
+>
+  <header class="mx-auto text-center w-[40vh] text-primary">
     <LogoEndemico />
     <ColorsBar />
   </header>
-  <article class="w-fit mx-auto">
+  <h1 class="text-2xl lg:text-4xl text-primary font-bold w-fit mx-auto">
+    Sitio en construcción
+  </h1>
+  <article class="w-full landscape:w-fit mx-auto">
     <section
-      class="grid grid-cols-4 gap-[2vh] place-items-center max-w-[100vh] h-fit mx-auto"
+      class="grid landscape:grid-cols-4 grid-cols-2 gap-[2vh] place-items-center w-full landscape:max-w-[100vh] h-fit mx-auto"
     >
       {
         Object.entries(PLACES).map(([id, place]) => (
           <section
             class:list={[
               "places-cards",
-              "relative w-full h-full rounded-xl overflow-hidden cursor-pointer group shadow-lg shadow-primary/10",
+              "relative w-full h-full rounded-xl overflow-hidden group shadow-lg shadow-primary/10",
             ]}
           >
             <div class="absolute w-full h-full -left-full z-10 p-4 bg-primary/80 group-hover:left-0 ease-in duration-200 grid place-content-center">
-              <h2 class="text-center font-bold leading-[1.8vh] text-[1.8vh] text-secondary">
+              <h2 class="text-center font-bold leading-[1.8vh] text-[1.8vh] text-secondary cursor-default">
                 {place.name}
               </h2>
             </div>
@@ -40,17 +44,17 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
               height={173}
               loading="eager"
               alt=""
-              class="w-full h-full aspect-[1920/1080] object-cover"
+              class="w-full h-full aspect-[1920/1080] object-cover pointer-events-none"
             />
           </section>
         ))
       }
     </section>
-    <ul class="flex gap-[2vh] mx-auto w-fit my-[2vh]">
+    <ul class="flex gap-[1vh] flex-wrap w-full justify-center my-[2vh]">
       {
         Object.values(ARTISTS).map((artist, i) => (
-          <li class="flex gap-[2vh] items-center">
-            <a href={artist.social_media} class="hover:underline text-[2vh]">
+          <li class="flex gap-[1vh] items-center">
+            <a href={artist.social_media} class="hover:underline text-[1.8vh]">
               {artist.name}
             </a>
             {i !== Object.values(ARTISTS).length - 1 && <span>•</span>}
@@ -59,16 +63,4 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
       }
     </ul>
   </article>
-  <Footer />
 </section>
-
-<script>
-  import { placesCardsList } from "src/services/domReferences";
-  import { verticalSwiper } from "src/services/swiperController";
-
-  placesCardsList.forEach((card, i) =>
-    card.addEventListener("click", () => {
-      verticalSwiper.slideToLoop(i + 1, 0, false);
-    })
-  );
-</script>

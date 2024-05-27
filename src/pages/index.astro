@@ -1,22 +1,8 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Header from "@components/Header.astro";
-import Place from "@components/Place.astro";
 import HeroSection from "@components/HeroSection.astro";
-import { PLACES } from "@data/PLACES";
 ---
 
 <Layout>
-  <Header />
-  <main class="swiper-main swiper h-full w-full">
-    <div class="swiper-wrapper">
-      <HeroSection />
-      {
-        Object.entries(PLACES).map(([id, place], i) => (
-          // PÁGINAS VERTICALES
-          <Place class="swiper-slide" data={place} id={id} />
-        ))
-      }
-    </div>
-  </main>
+  <HeroSection />
 </Layout>
