@@ -1,7 +1,7 @@
 ---
+import { Nav } from "@components/Nav.tsx";
 import { InfoButton } from "./InfoButton";
 import Isotipo from "./icons/Isotipo.astro";
-import { Nav } from "@components/Nav.tsx";
 ---
 
 <header
@@ -21,7 +21,7 @@ import { Nav } from "@components/Nav.tsx";
   <InfoButton id="header_info" client:only="react" />
 </header>
 
-<script>
+<!-- <script>
   import { header, logo } from "src/services/domReferences";
   import { verticalSwiper } from "src/services/swiperController";
 
@@ -44,4 +44,4 @@ import { Nav } from "@components/Nav.tsx";
     // When the logo is clicked, navigate the carousel to the first slide
     verticalSwiper.slideToLoop(0, 0, false);
   });
-</script>
+</script> -->

@@ -24,12 +24,3 @@ export interface Place {
 export interface Places {
   [key: string]: Place
 }
-
-
-export interface Zone {
-  zone_id: string
-  zone: string
-  places: Place[]
-}
-
-export type Zones = Zone[]

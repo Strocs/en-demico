@@ -1,10 +1,10 @@
 ---
-import { PLACES } from "@data/PLACES";
-import ColorsBar from "./ui/ColorsBar.astro";
 import { Image } from "astro:assets";
-import LogoEndemico from "./icons/LogoEndemico.astro";
+import { PLACES } from "@data/PLACES";
 import { ARTISTS } from "@data/ARTISTS";
+import ColorsBar from "./ColorsBar.astro";
 import Footer from "./Footer.astro";
+import LogoEndemico from "./icons/LogoEndemico.astro";
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/*.{jpeg,jpg,png,gif}"
@@ -61,7 +61,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   </article>
   <Footer />
 </section>
-
+<!-- 
 <script>
   import { placesCardsList } from "src/services/domReferences";
   import { verticalSwiper } from "src/services/swiperController";
@@ -71,4 +71,4 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
       verticalSwiper.slideToLoop(i + 1, 0, false);
     })
   );
-</script>
+</script> -->

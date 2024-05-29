@@ -8,7 +8,7 @@ import react from '@astrojs/react'
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), sitemap(), react()],
-  site: 'https://endemico.vercel.app',
+  site: 'https://en-demico.cl/',
   output: 'server',
   adapter: vercel()
 })

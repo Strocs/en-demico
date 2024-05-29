@@ -1,9 +1,9 @@
 ---
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
-import type { Place } from "@customTypes/types";
-import Paragraph from "./ui/Paragraph.astro";
 import { YouTube } from "astro-embed";
+import type { Place } from "@customTypes/types";
+import Paragraph from "./Paragraph.astro";
 
 interface Props {
   class?: string;
@@ -79,15 +79,15 @@ if (!images[image])
         />
       </div>
     </div>
-    <figure class="swiper-slide w-fit landscape:h-screen p-[2.8vh]">
-      <div id={`${id}-image`} class="cursor-pointer">
+    <figure class="swiper-slide w-fit landscape:h-full p-[2.8vh]">
+      <div id={`${id}-image`} class="cursor-pointer h-full">
         <Image
           src={images[image]()}
           width={1595}
           height={897}
           loading="eager"
           alt={`Ilustración de ${name} realizada por ${illustrator.name}`}
-          class="w-full landscape:h-full aspect-auto pointer-events-none object-cover rounded-2xl shadow-lg"
+          class="w-full xl:h-full aspect-[1920/1080] pointer-events-none rounded-2xl shadow-lg object-cover"
           ,
         />
       </div>

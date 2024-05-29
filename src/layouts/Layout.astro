@@ -26,7 +26,16 @@ import { SITE } from "@data/SITE";
     <meta property="og:type" content="website" />
     <meta property="og:title" content={SITE.title} />
     <meta property="og:description" content={SITE.description} />
-    <meta property="og:image" content={SITE.OG_image} />
+    <meta
+      property="og:image"
+      content={SITE.OG_image.dark_mode}
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      property="og:image"
+      content={SITE.OG_image.light_mode}
+      media="(prefers-color-scheme: light)"
+    />
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -37,11 +46,15 @@ import { SITE } from "@data/SITE";
     <meta property="twitter:url" content={SITE.URL} />
     <meta name="twitter:title" content={SITE.title} />
     <meta name="twitter:description" content={SITE.description} />
-    <meta name="twitter:image" content={SITE.OG_image} />
-
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    <meta
+      name="twitter:image"
+      content={SITE.OG_image.dark_mode}
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="twitter:image"
+      content={SITE.OG_image.light_mode}
+      media="(prefers-color-scheme: light)"
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -50,6 +63,7 @@ import { SITE } from "@data/SITE";
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
   <body
     class="w-full h-full min-h-[100dvh] relative font-montserrat bg-secondary"
@@ -59,6 +73,8 @@ import { SITE } from "@data/SITE";
 </html>
 
 <style is:global>
+  @import "swiper/css";
+
   html {
     height: 100%;
     display: relative;

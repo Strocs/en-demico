@@ -1,6 +1,6 @@
-import { PLACES } from '@data/PLACES'
 import { useEffect, useState } from 'react'
-import { verticalSwiper } from 'src/services/swiperController'
+import { PLACES } from '@data/PLACES'
+import { verticalSwiper } from '@services/swiperController'
 
 interface TailwindColors {
   [key: string]: {
