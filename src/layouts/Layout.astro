@@ -26,7 +26,16 @@ import { SITE } from "@data/SITE";
     <meta property="og:type" content="website" />
     <meta property="og:title" content={SITE.title} />
     <meta property="og:description" content={SITE.description} />
-    <meta property="og:image" content={SITE.OG_image} />
+    <meta
+      property="og:image"
+      content={SITE.OG_image.light_mode}
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      property="og:image"
+      content={SITE.OG_image.dark_mode}
+      media="(prefers-color-scheme: dark)"
+    />
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -37,7 +46,16 @@ import { SITE } from "@data/SITE";
     <meta property="twitter:url" content={SITE.URL} />
     <meta name="twitter:title" content={SITE.title} />
     <meta name="twitter:description" content={SITE.description} />
-    <meta name="twitter:image" content={SITE.OG_image} />
+    <meta
+      name="twitter:image"
+      content={SITE.OG_image.light_mode}
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="twitter:image"
+      content={SITE.OG_image.light_mode}
+      media="(prefers-color-scheme: dark)"
+    />
 
     <link
       rel="stylesheet"
