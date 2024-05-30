@@ -6,7 +6,7 @@ import Isotipo from "./icons/Isotipo.astro";
 
 <header
   id="header"
-  class="fixed left-0 w-[11vh] bg-secondary z-10 h-full flex flex-col items-center justify-between py-[2.8vh] opacity-0 pointer-events-none duration-150"
+  class="fixed left-0 w-[10vh] md:w-[11vh] bg-secondary z-10 h-full flex flex-col items-center justify-between py-4 md:py-[2.8vh] opacity-0 pointer-events-none duration-150"
   ,
 >
   <button
@@ -20,28 +20,3 @@ import Isotipo from "./icons/Isotipo.astro";
   </aside>
   <InfoButton id="header_info" client:only="react" />
 </header>
-
-<!-- <script>
-  import { header, logo } from "src/services/domReferences";
-  import { verticalSwiper } from "src/services/swiperController";
-
-  // Listen for the "slideChange" event on the swiperY instance
-  verticalSwiper.on("slideChange", (e) => {
-    // Check if the current slide index is 0 (the first slide)
-    if (e.realIndex === 0) {
-      // If it's the first slide, hide the header
-      header.style.opacity = "0";
-      header.style.pointerEvents = "none";
-    } else {
-      // For all other slides, show the header
-      header.style.opacity = "1";
-      header.style.pointerEvents = "auto";
-    }
-  });
-
-  // Add a click event listener to the logo element
-  logo.addEventListener("click", () => {
-    // When the logo is clicked, navigate the carousel to the first slide
-    verticalSwiper.slideToLoop(0, 0, false);
-  });
-</script> -->

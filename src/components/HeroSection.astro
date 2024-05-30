@@ -11,25 +11,27 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 );
 ---
 
-<section class="w-full h-screen swiper-slide grid bg-secondary p-[2.8vh]">
-  <header class="mx-auto text-center mb-[2vh] w-[40vh] text-primary">
+<section
+  class="swiper-slide bg-secondary p-4 md:p-[2.8vh] !flex flex-col justify-between gap-2"
+>
+  <header class="mx-auto text-center w-[40vh] text-primary">
     <LogoEndemico />
     <ColorsBar />
   </header>
   <article class="w-fit mx-auto">
     <section
-      class="grid grid-cols-4 gap-[2vh] place-items-center max-w-[100vh] h-fit mx-auto"
+      class="grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-2 xl:gap-[2vh] place-items-center w-full max-w-full md:max-w-[100vh] h-fit mx-auto"
     >
       {
         Object.entries(PLACES).map(([id, place]) => (
-          <section
+          <figure
             class:list={[
               "places-cards",
               "relative w-full h-full rounded-xl overflow-hidden cursor-pointer group shadow-lg shadow-primary/10",
             ]}
           >
-            <div class="absolute w-full h-full -left-full z-10 p-4 bg-primary/80 group-hover:left-0 ease-in duration-200 grid place-content-center">
-              <h2 class="text-center font-bold leading-[1.8vh] text-[1.8vh] text-secondary">
+            <div class="absolute w-full h-full -left-full z-10 p-4 bg-primary/80 group-hover:left-0 ease-in duration-200 hidden md:grid place-content-center">
+              <h2 class="text-center font-bold leading-none text-base text-secondary">
                 {place.name}
               </h2>
             </div>
@@ -42,15 +44,17 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
               alt=""
               class="w-full h-full aspect-[1920/1080] object-cover"
             />
-          </section>
+          </figure>
         ))
       }
     </section>
-    <ul class="flex gap-[2vh] mx-auto w-fit my-[2vh]">
+    <ul
+      class="hidden md:flex gap-4 mx-auto w-fit my-[2vh] flex-wrap leading-none justify-center"
+    >
       {
         Object.values(ARTISTS).map((artist, i) => (
-          <li class="flex gap-[2vh] items-center">
-            <a href={artist.social_media} class="hover:underline text-[2vh]">
+          <li class="flex gap-4 items-center">
+            <a href={artist.social_media} class="hover:underline text-base">
               {artist.name}
             </a>
             {i !== Object.values(ARTISTS).length - 1 && <span>•</span>}
@@ -61,14 +65,3 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   </article>
   <Footer />
 </section>
-<!-- 
-<script>
-  import { placesCardsList } from "src/services/domReferences";
-  import { verticalSwiper } from "src/services/swiperController";
-
-  placesCardsList.forEach((card, i) =>
-    card.addEventListener("click", () => {
-      verticalSwiper.slideToLoop(i + 1, 0, false);
-    })
-  );
-</script> -->

@@ -38,59 +38,87 @@ if (!images[image])
 
 <article
   id={id}
-  class:list={[`places swiper swiper-${id}`, "h-full w-full", customStyle]}
+  class:list={[
+    `places swiper relative swiper-${id}`,
+    "h-full w-full",
+    customStyle,
+  ]}
 >
+  <header
+    class="absolute top-0 left-0 pl-[10vh] p-4 md:p-[2.8vh] md:pl-[11vh] md:hidden"
+  >
+    <h2 class="text-3xl leading-[30px] font-bold text-primary">
+      {name}
+    </h2>
+    <p class="font-medium tracking-wide md:text-[2vh]">
+      {place}
+    </p>
+  </header>
   <div class="swiper-wrapper h-full">
     <div
-      class="swiper-slide max-w-[80vh] p-[2.8vh] landscape:pr-0 pl-[11vh] landscape:pt-[10vh] w-full h-full"
+      class="swiper-slide max-w-[80vh] p-4 md:p-[2.8vh] landscape:pr-0 pl-[10vh] md:pl-[11vh] landscape:pt-[10vh] w-full h-full"
     >
       <div class="grid h-full">
-        <div class="space-y-[1vh]">
-          <header class="space-y-1">
-            <h2 class="text-[4.8vh] leading-[4.8vh] font-bold text-primary">
+        <div class="">
+          <header class="opacity-0 md:opacity-100">
+            <h2
+              class="text-3xl leading-[30px] md:text-[4.8vh] md:leading-[4.8vh] font-bold text-primary"
+            >
               {name}
             </h2>
-            <p class="font-medium tracking-wide text-[2vh]">{place}</p>
+            <p class="font-medium tracking-wide md:text-[2vh]">
+              {place}
+            </p>
           </header>
-          <section class="text-primary grid gap-[1vh]">
+          <section class="text-primary grid gap-[1vh] mt-3">
             <div>
               <Paragraph
-                class="text-pretty leading-[2vh] text-[1.6vh]"
+                class="text-pretty leading-tight xs:leading-tight md:leading-[2vh] text-sm xs:text-base md:text-[1.6vh]"
                 text={`"${description}"`}
                 decorator="i"
               />
             </div>
-            <address>
-              <strong class="font-medium text-[1.8vh]">Por:</strong>
+            <address class="leading-none">
+              <strong class="font-medium text-sm md:text-[1.8vh]">Por:</strong>
               <a
                 href={illustrator.social_media}
                 target="_blank"
-                class="hover:underline text-[1.8vh]"
+                class="hover:underline text-sm md:text-[1.8vh]"
                 >{illustrator.real_name}
-                <span class="text-[1.5vh]">({illustrator.name})</span> ↗</a
+                <span class="text-sm md:text-[1.5vh]">({illustrator.name})</span
+                > ↗</a
               >
             </address>
           </section>
         </div>
         <YouTube
           id={video_id}
-          class="aspect-video w-full self-end rounded-xl"
+          class="hidden md:block aspect-video w-full self-end rounded-xl"
           params="fs=0&modestbranding=1&showinfo=1"
         />
       </div>
     </div>
-    <figure class="swiper-slide w-fit landscape:h-full p-[2.8vh]">
-      <div id={`${id}-image`} class="cursor-pointer h-full">
+    <figure
+      class="swiper-slide !w-fit landscape:h-full p-4 md:p-[2.8vh] space-y-4 landscape:space-y-0 pl-[10vh]"
+    >
+      <div
+        id={`${id}-image`}
+        class="md:cursor-pointer w-fit h-fit landscape:h-full mt-[40%] landscape:mt-0"
+      >
         <Image
           src={images[image]()}
           width={1595}
           height={897}
           loading="eager"
           alt={`Ilustración de ${name} realizada por ${illustrator.name}`}
-          class="w-full xl:h-full aspect-[1920/1080] pointer-events-none rounded-2xl shadow-lg object-cover"
-          ,
+          class="w-full h-fit md:h-fit xl:h-full aspect-[1920/1080] pointer-events-none rounded-2xl shadow-lg object-cover"
         />
       </div>
+      <YouTube
+        id={video_id}
+        class="md:hidden aspect-video w-full self-end rounded-xl"
+        params="fs=0&modestbranding=1&showinfo=1"
+      />
     </figure>
   </div>
 </article>

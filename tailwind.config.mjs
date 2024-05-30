@@ -9,6 +9,9 @@ export default {
       colors: {
         primary: '#282827',
         secondary: '#F5F5F5'
+      },
+      screens: {
+        xs: '361px'
       }
     }
   },

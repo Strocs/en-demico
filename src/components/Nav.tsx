@@ -37,7 +37,7 @@ export const Nav = () => {
   }, [])
 
   return (
-    <nav className='flex flex-col items-center gap-[1.6vh]'>
+    <nav id='header_nav' className='flex flex-col items-center gap-[1.6vh]'>
       {Object.entries(PLACES).map(([id, { color, icon: Icon }], i) => {
         const activeStyles =
           i + 1 === activeSlide

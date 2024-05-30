@@ -1,6 +1,6 @@
 import Swiper from "swiper";
 import { Navigation, Mousewheel } from "swiper/modules";
-import { placesList, header, logo, placesCardsList } from "./domReferences";
+import { placesList, header, logo, placesCardsList, nav } from "./domReferences";
 
 // Initialize the vertical swiper
 export const verticalSwiper = new Swiper(".swiper-main", {
@@ -17,7 +17,17 @@ placesList.forEach((place) => {
   // Create a new horizontal swiper for each place
   const swiper = new Swiper(`.swiper-${place.id}`, {
     slidesPerView: "auto",
-
+    // on: {
+    //   slideChange: (e) => {
+    //     if (e.realIndex === 1) {
+    //       nav.style.opacity = "0";
+    //       nav.style.pointerEvents = "none";
+    //     } else {
+    //       nav.style.opacity = "1";
+    //       nav.style.pointerEvents = "auto";
+    //     }
+    //   }
+    // }
   });
 
   horizontalSwipers.push({ id: place.id, swiper })
@@ -25,7 +35,8 @@ placesList.forEach((place) => {
   // Get image from place
   const placeImage = place.querySelector(`#${place.id}-image`)
   // Add event listener to toggle swiper slide on image click
-  placeImage?.addEventListener('click', (e) => {
+  placeImage?.addEventListener('click', () => {
+    if (window.innerWidth < 768) return
     if (swiper.activeIndex === 0) {
       swiper.slideNext()
     } else {

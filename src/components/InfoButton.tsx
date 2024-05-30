@@ -33,7 +33,7 @@ export const InfoButton = ({ id }: Props) => {
         onClick={() => setShowModal(!showModal)}
         className={`${
           showModal ? 'text-blue-800' : 'text-primary/30'
-        } hover:text-blue-800 duration-150 cursor-pointer rounded-full h-[2.6vh] w-[2.6vh] flex items-center justify-center shrink-0`}
+        } hover:text-blue-800 duration-150 cursor-pointer rounded-full h-6 w-6 flex items-center justify-center shrink-0`}
       >
         <InfoIcon />
       </button>

@@ -14,10 +14,12 @@ const { class: customStyles } = Astro.props;
   ]}
 >
   <div>
-    <p class="text-center mb-[1vh] font-medium text-[2vh]">
+    <p
+      class="text-center mb-1 md:mb-3 landscape:mb-2 landscape:2xl:mb-6 font-medium text-base md:text-lg"
+    >
       Proyecto realizado por:
     </p>
-    <ul class="flex gap-[6vh]">
+    <ul class="flex gap-4 md:gap-[4vh]">
       <li class="w-[6vh] h-[6vh] bg-primary rounded-full"></li>
       <li class="w-[6vh] h-[6vh] bg-primary rounded-full"></li>
       <li class="w-[6vh] h-[6vh] bg-primary rounded-full"></li>
@@ -26,7 +28,10 @@ const { class: customStyles } = Astro.props;
     </ul>
   </div>
   <div class="text-center">
-    <p class="text-[1.8vh]">Haz scroll para navegar</p>
+    <p class="text-sm md:text-[1.8vh]">
+      Haz <i class="hidden xl:inline">scroll</i><i class="xl:hidden">swipe</i> para
+      navegar
+    </p>
     <ByStrocs color="text-primary" class="text-[1.8vh]" />
   </div>
 </footer>
