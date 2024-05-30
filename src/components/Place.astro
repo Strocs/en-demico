@@ -44,62 +44,65 @@ if (!images[image])
     customStyle,
   ]}
 >
-  <header
-    class="absolute top-0 left-0 pl-[10vh] p-4 md:p-[2.8vh] md:pl-[11vh] md:hidden"
-  >
-    <h2 class="text-3xl leading-[30px] font-bold text-primary">
-      {name}
-    </h2>
-    <p class="font-medium tracking-wide md:text-[2vh]">
-      {place}
-    </p>
-  </header>
   <div class="swiper-wrapper h-full">
     <div
-      class="swiper-slide max-w-[80vh] p-4 md:p-[2.8vh] landscape:pr-0 pl-[10vh] md:pl-[11vh] landscape:pt-[10vh] w-full h-full"
+      class="swiper-slide max-w-[80vh] p-4 md:p-[2.8vh] landscape:pr-0 pl-[10vh] md:pl-[11vh] landscape:pt-[10vh] w-full h-full !flex flex-col gap-4"
     >
-      <div class="grid h-full">
-        <div class="">
-          <header class="opacity-0 md:opacity-100">
-            <h2
-              class="text-3xl leading-[30px] md:text-[4.8vh] md:leading-[4.8vh] font-bold text-primary"
+      <div class="h-full">
+        <header>
+          <h2
+            class="text-3xl leading-[30px] md:text-[4.8vh] md:leading-[4.8vh] font-bold text-primary"
+          >
+            {name}
+          </h2>
+          <p class="font-medium tracking-wide md:text-[2vh]">
+            {place}
+          </p>
+        </header>
+        <section class="mt-2 grid gap-2">
+          <Paragraph
+            class="text-pretty landscape:hidden text-primary/90 leading-tight xs:leading-tight md:leading-[2vh] text-sm xs:text-sm md:text-[1.6vh] quotes"
+            text={`${description}`}
+            decorator="i"
+            wordsLength={15}
+          />
+          <Paragraph
+            class="hidden landscape:inline-block text-pretty text-primary/90 leading-tight xs:leading-tight md:leading-[2vh] text-sm xs:text-sm md:text-[1.6vh] quotes"
+            text={`${description}`}
+            decorator="i"
+          />
+          <address class="leading-3 text-primary">
+            <strong class="font-medium text-sm md:text-[1.8vh]">Por:</strong>
+            <a
+              href={illustrator.social_media}
+              target="_blank"
+              class="hover:underline text-sm md:text-[1.8vh]"
+              >{illustrator.real_name}
+              <span class="text-sm md:text-[1.5vh]">({illustrator.name})</span> ↗</a
             >
-              {name}
-            </h2>
-            <p class="font-medium tracking-wide md:text-[2vh]">
-              {place}
-            </p>
-          </header>
-          <section class="text-primary grid gap-[1vh] mt-3">
-            <div>
-              <Paragraph
-                class="text-pretty leading-tight xs:leading-tight md:leading-[2vh] text-sm xs:text-base md:text-[1.6vh]"
-                text={`"${description}"`}
-                decorator="i"
-              />
-            </div>
-            <address class="leading-none">
-              <strong class="font-medium text-sm md:text-[1.8vh]">Por:</strong>
-              <a
-                href={illustrator.social_media}
-                target="_blank"
-                class="hover:underline text-sm md:text-[1.8vh]"
-                >{illustrator.real_name}
-                <span class="text-sm md:text-[1.5vh]">({illustrator.name})</span
-                > ↗</a
-              >
-            </address>
-          </section>
-        </div>
-        <YouTube
-          id={video_id}
-          class="hidden md:block aspect-video w-full self-end rounded-xl"
-          params="fs=0&modestbranding=1&showinfo=1"
-        />
+          </address>
+          <button
+            class="landscape:hidden text-sm px-2 py-1 w-fit justify-self-end hover:bg-primary hover:text-secondary duration-150 rounded-lg"
+            >Continuar leyendo</button
+          >
+        </section>
       </div>
+      <Image
+        src={images[image]()}
+        width={1595}
+        height={897}
+        loading="eager"
+        alt={`Ilustración de ${name} realizada por ${illustrator.name}`}
+        class="landscape:hidden w-full h-fit aspect-[1920/1080] rounded-2xl shadow-lg object-cover self-end"
+      />
+      <YouTube
+        id={video_id}
+        class="aspect-video w-full self-end rounded-xl"
+        params="fs=0&modestbranding=1&showinfo=1"
+      />
     </div>
     <figure
-      class="swiper-slide !w-fit landscape:h-full p-4 md:p-[2.8vh] space-y-4 landscape:space-y-0 pl-[10vh]"
+      class="swiper-slide !hidden landscape:!block !w-fit landscape:h-full p-4 md:p-[2.8vh]"
     >
       <div
         id={`${id}-image`}
@@ -114,11 +117,8 @@ if (!images[image])
           class="w-full h-fit md:h-fit xl:h-full aspect-[1920/1080] pointer-events-none rounded-2xl shadow-lg object-cover"
         />
       </div>
-      <YouTube
-        id={video_id}
-        class="md:hidden aspect-video w-full self-end rounded-xl"
-        params="fs=0&modestbranding=1&showinfo=1"
-      />
     </figure>
   </div>
 </article>
+
+<script></script>

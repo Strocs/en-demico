@@ -27,7 +27,7 @@ export const InfoButton = ({ id }: Props) => {
   }, [])
 
   return (
-    <div id={id} className='w-fit mx-auto relative'>
+    <div id={id} className='hidden landscape:block w-fit mx-auto relative'>
       <button
         onBlur={() => setShowModal(false)}
         onClick={() => setShowModal(!showModal)}

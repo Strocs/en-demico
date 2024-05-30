@@ -17,17 +17,17 @@ placesList.forEach((place) => {
   // Create a new horizontal swiper for each place
   const swiper = new Swiper(`.swiper-${place.id}`, {
     slidesPerView: "auto",
-    // on: {
-    //   slideChange: (e) => {
-    //     if (e.realIndex === 1) {
-    //       nav.style.opacity = "0";
-    //       nav.style.pointerEvents = "none";
-    //     } else {
-    //       nav.style.opacity = "1";
-    //       nav.style.pointerEvents = "auto";
-    //     }
-    //   }
-    // }
+    on: {
+      slideChange: (e) => {
+        if (e.realIndex === 1) {
+          header.style.opacity = "0";
+          header.style.pointerEvents = "none";
+        } else {
+          header.style.opacity = "1";
+          header.style.pointerEvents = "auto";
+        }
+      }
+    }
   });
 
   horizontalSwipers.push({ id: place.id, swiper })

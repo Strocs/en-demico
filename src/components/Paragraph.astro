@@ -5,10 +5,29 @@ interface Props {
   text: string;
   class?: string;
   decorator?: HTMLTag;
+  length?: number;
+  wordsLength?: number;
 }
 
-const { text, class: customStyle, decorator: Element } = Astro.props;
-const textSplited = text.split("\n");
+const {
+  text,
+  class: customStyle,
+  decorator: Element,
+  length,
+  wordsLength,
+} = Astro.props;
+
+const trimmedText =
+  !!length && length < text.length ? `${text.substring(0, length)}...` : text;
+
+const textToArray = text.trim().split(" ");
+
+const resumedText =
+  !!wordsLength && wordsLength < textToArray.length - 1
+    ? `${textToArray.slice(0, wordsLength).join(" ")}...`
+    : text;
+
+const textSplited = resumedText.split("\n");
 ---
 
 {
@@ -27,3 +46,10 @@ const textSplited = text.split("\n");
     );
   })
 }
+
+<style>
+  .quotes::before,
+  .quotes::after {
+    content: '"';
+  }
+</style>
