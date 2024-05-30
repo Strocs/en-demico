@@ -46,9 +46,18 @@ if (!images[image])
 >
   <div class="swiper-wrapper h-full">
     <div
+      id={`${id}-wrapper`}
       class="swiper-slide max-w-[80vh] p-4 md:p-[2.8vh] landscape:pr-0 pl-[10vh] md:pl-[11vh] landscape:pt-[10vh] w-full h-full !flex flex-col gap-4"
     >
       <div class="h-full">
+        <Image
+          src={images[image]()}
+          width={1595}
+          height={897}
+          loading="eager"
+          alt={`Ilustración de ${name} realizada por ${illustrator.name}`}
+          class="place_mobile-img landscape:hidden w-full h-fit aspect-[1920/1080] rounded-2xl shadow-lg object-cover mb-4 transition-[margin] duration-150"
+        />
         <header>
           <h2
             class="text-3xl leading-[30px] md:text-[4.8vh] md:leading-[4.8vh] font-bold text-primary"
@@ -61,13 +70,13 @@ if (!images[image])
         </header>
         <section class="mt-2 grid gap-2">
           <Paragraph
-            class="text-pretty landscape:hidden text-primary/90 leading-tight xs:leading-tight md:leading-[2vh] text-sm xs:text-sm md:text-[1.6vh] quotes"
+            class="text-resumed text-pretty landscape:hidden text-primary/90 leading-tight xs:leading-tight md:leading-[2vh] text-sm xs:text-sm md:text-[1.6vh] quotes"
             text={`${description}`}
             decorator="i"
             wordsLength={15}
           />
           <Paragraph
-            class="hidden landscape:inline-block text-pretty text-primary/90 leading-tight xs:leading-tight md:leading-[2vh] text-sm xs:text-sm md:text-[1.6vh] quotes"
+            class="text-completed hidden landscape:inline-block text-pretty text-primary/90 leading-tight xs:leading-tight md:leading-[2vh] text-sm xs:text-sm md:text-[1.6vh] quotes"
             text={`${description}`}
             decorator="i"
           />
@@ -78,26 +87,20 @@ if (!images[image])
               target="_blank"
               class="hover:underline text-sm md:text-[1.8vh]"
               >{illustrator.real_name}
-              <span class="text-sm md:text-[1.5vh]">({illustrator.name})</span> ↗</a
+              <span class="text-xs md:text-[1.5vh]"
+                >({illustrator.name}) ↗</span
+              ></a
             >
           </address>
           <button
-            class="landscape:hidden text-sm px-2 py-1 w-fit justify-self-end hover:bg-primary hover:text-secondary duration-150 rounded-lg"
+            class="read-more-btn landscape:hidden text-sm px-2 py-1 w-fit justify-self-end hover:bg-primary hover:text-secondary duration-150 rounded-lg"
             >Continuar leyendo</button
           >
         </section>
       </div>
-      <Image
-        src={images[image]()}
-        width={1595}
-        height={897}
-        loading="eager"
-        alt={`Ilustración de ${name} realizada por ${illustrator.name}`}
-        class="landscape:hidden w-full h-fit aspect-[1920/1080] rounded-2xl shadow-lg object-cover self-end"
-      />
       <YouTube
         id={video_id}
-        class="aspect-video w-full self-end rounded-xl"
+        class="place_video aspect-video w-full self-end rounded-xl transition-[margin] duration-150"
         params="fs=0&modestbranding=1&showinfo=1"
       />
     </div>
@@ -121,4 +124,34 @@ if (!images[image])
   </div>
 </article>
 
-<script></script>
+<script>
+  import { placesList } from "@services/domReferences";
+
+  placesList.forEach((place) => {
+    const btn = place.querySelector(".read-more-btn") as HTMLButtonElement;
+    const image = place.querySelector(".place_mobile-img");
+    const video = place.querySelector(".place_video");
+    const resumedText = place.querySelector(".text-resumed");
+    const completeText = place.querySelector(".text-completed");
+
+    const handleReadMoreButton = () => {
+      if (!!btn?.getAttribute("data-isActive")) {
+        btn?.removeAttribute("data-isActive");
+        image?.classList.remove("-mt-[11.5rem]");
+        video?.classList.remove("-mb-[11.5rem]");
+        resumedText?.classList.remove("hidden");
+        completeText?.classList.add("hidden");
+        btn.innerText = "Continuar leyendo";
+      } else {
+        btn?.setAttribute("data-isActive", "true");
+        image?.classList.add("-mt-[11.5rem]");
+        video?.classList.add("-mb-[11.5rem]");
+        resumedText?.classList.add("hidden");
+        completeText?.classList.remove("hidden");
+        btn.innerText = "Volver atrás";
+      }
+    };
+
+    btn?.addEventListener("click", handleReadMoreButton);
+  });
+</script>
