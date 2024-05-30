@@ -12,6 +12,15 @@ export default {
       },
       screens: {
         xs: '361px'
+      },
+      transitionProperty: {
+        'height-opacity-visibility': 'height, opacity, visibility'
+      },
+      transitionDuration: {
+        500: '500ms'
+      },
+      transitionTimingFunction: {
+        ease: 'ease'
       }
     }
   },

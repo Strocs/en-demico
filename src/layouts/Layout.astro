@@ -1,5 +1,6 @@
 ---
 import { SITE } from "@data/SITE";
+import { ViewTransitions } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -64,19 +65,18 @@ import { SITE } from "@data/SITE";
       rel="stylesheet"
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <ViewTransitions />
   </head>
   <body
     class="w-full h-full min-h-[100dvh] relative font-montserrat bg-secondary"
   >
     <slot />
-  </body>
+  </body><style is:global>
+    @import "swiper/css";
+
+    html {
+      height: 100%;
+      display: relative;
+    }
+  </style>
 </html>
-
-<style is:global>
-  @import "swiper/css";
-
-  html {
-    height: 100%;
-    display: relative;
-  }
-</style>
