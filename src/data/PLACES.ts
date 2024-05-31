@@ -65,7 +65,7 @@ export const PLACES: Places = {
   gabriela: {
     name: 'Gabriela Mistral',
     place: 'Vicuña, Coquimbo',
-    description: 'En la ilustración de Gabriela Mistral busqué plasmar el cómo ella siempre estuvo presente y buscaba ayudar a la gente de su tierra, en especial a las infancias que vivían ahí. En algunos relatos que leí, varios adultos recordaban cómo cuando eran niños y niñas recibieron zapatos regalados por Gabriela Mistral,  algo que en estos tiempos podría parecer muy menor pero que en ese entonces significó para varios y varias tener su primer par de zapatos en la vida. \n También tomé de referencia para la ilustración la apertura de escuelas agrícolas en el Valle del Elqui que fueron impulsadas por Gabriela Mistral.',
+    description: 'En la ilustración de Gabriela Mistral busqué plasmar el cómo ella siempre estuvo presente y buscaba ayudar a la gente de su tierra, en especial a las infancias que vivían ahí. En algunos relatos que leí, varios adultos recordaban cómo cuando eran niños y niñas recibieron zapatos regalados por Gabriela Mistral,  algo que en estos tiempos podría parecer muy menor pero que en ese entonces significó para varios y varias tener su primer par de zapatos en la vida. También tomé de referencia para la ilustración la apertura de escuelas agrícolas en el Valle del Elqui que fueron impulsadas por Gabriela Mistral.',
     icon: MistralIcon,
     color: '#1f2122',
     latitude: 1,

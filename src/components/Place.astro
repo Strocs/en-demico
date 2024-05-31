@@ -56,7 +56,7 @@ if (!images[image])
           height={897}
           loading="eager"
           alt={`Ilustración de ${name} realizada por ${illustrator.name}`}
-          class="place-img-mobile landscape:hidden w-full h-fit aspect-[1920/1080] rounded-2xl shadow-lg object-cover mb-4 transition-[margin] duration-150"
+          class="place-img-mobile landscape:hidden w-full h-fit aspect-[1920/1080] rounded-2xl shadow-lg object-cover mb-4 transition-[margin] duration-300"
         />
         <header>
           <h2
@@ -70,7 +70,7 @@ if (!images[image])
         </header>
         <section class="mt-2 grid gap-2 relative">
           <Paragraph
-            class="place-description text-pretty text-primary/90 leading-tight xs:leading-tight md:leading-[2vh] text-sm xs:text-sm md:text-[1.6vh] line-clamp-3 md:line-clamp-none transition-all duration-150"
+            class="place-description h-full text-pretty text-primary/90 leading-tight xs:leading-tight md:leading-[2vh] text-sm xs:text-sm md:text-[1.6vh] md:line-clamp-none transition-[max-height] duration-300 overflow-y-hidden line-clamp-3"
             text={`${description}`}
             decorator="i"
           />
@@ -94,7 +94,7 @@ if (!images[image])
       </div>
       <YouTube
         id={video_id}
-        class="place-video aspect-video w-full self-end rounded-xl transition-[margin] duration-150"
+        class="place-video aspect-video w-full self-end rounded-xl transition-[margin] duration-300"
         params="fs=0&modestbranding=1&showinfo=1"
       />
     </div>
@@ -123,25 +123,46 @@ if (!images[image])
 
   placesList.forEach((place) => {
     const btn = place.querySelector(".read-more-btn") as HTMLButtonElement;
-    const image = place.querySelector(".place-img-mobile");
-    const video = place.querySelector(".place-video");
-    const text = place.querySelector(".place-description");
+    const image = place.querySelector(".place-img-mobile") as HTMLImageElement;
+    const video = place.querySelector(".place-video") as HTMLVideoElement;
+    const text = place.querySelector(
+      ".place-description"
+    ) as HTMLParagraphElement;
+
+    const minHeight = text.getBoundingClientRect().height;
+    const maxHeight = text.firstElementChild?.getBoundingClientRect().height;
+
+    text.style.maxHeight = `${minHeight}px`;
 
     const handleReadMoreButton = () => {
-      if (!!btn?.getAttribute("data-isActive")) {
-        btn?.removeAttribute("data-isActive");
-        image?.classList.remove("-mt-[11.5rem]");
-        video?.classList.remove("hidden");
-        text?.classList.add("line-clamp-3");
-        btn.innerText = "Continuar leyendo";
+      if (!btn.getAttribute("data-isActive")) {
+        readMore();
       } else {
-        btn?.setAttribute("data-isActive", "true");
-        image?.classList.add("-mt-[11.5rem]");
-        video?.classList.add("hidden");
-        text?.classList.remove("line-clamp-3");
-        btn.innerText = "Volver atrás";
+        readLess();
       }
     };
+
+    function readMore() {
+      btn.setAttribute("data-isActive", "true");
+      image.classList.add("-mt-[11.5rem]");
+      video.classList.add("-mb-[11.5rem]");
+      text.classList.remove("line-clamp-3");
+      window.requestAnimationFrame(() => {
+        text.style.maxHeight = `${maxHeight}px`;
+      });
+      btn.innerText = "Volver atrás";
+    }
+
+    function readLess() {
+      btn.removeAttribute("data-isActive");
+      image.classList.remove("-mt-[11.5rem]");
+      video.classList.remove("-mb-[11.5rem]");
+      text.style.maxHeight = `${minHeight}px`;
+      setTimeout(() => {
+        text.classList.add("line-clamp-3");
+      }, 300);
+      btn.innerText = "Continuar leyendo";
+    }
 
     btn?.addEventListener("click", handleReadMoreButton);
   });
