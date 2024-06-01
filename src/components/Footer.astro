@@ -1,10 +1,17 @@
 ---
+import { Image } from "astro:assets";
 import ByStrocs from "./ByStrocs.astro";
 
 interface Props {
   class?: string;
 }
 const { class: customStyles } = Astro.props;
+
+const logos = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/logos/*.{jpeg,jpg,png,gif}"
+);
+
+const logosList = Object.entries(logos);
 ---
 
 <footer
@@ -19,12 +26,36 @@ const { class: customStyles } = Astro.props;
     >
       Proyecto financiado por:
     </p>
-    <ul class="flex gap-4 md:gap-[4vh]">
-      <li class="w-[6vh] h-[6vh] bg-primary rounded-full"></li>
-      <li class="w-[6vh] h-[6vh] bg-primary rounded-full"></li>
-      <li class="w-[6vh] h-[6vh] bg-primary rounded-full"></li>
-      <li class="w-[6vh] h-[6vh] bg-primary rounded-full"></li>
-      <li class="w-[6vh] h-[6vh] bg-primary rounded-full"></li>
+    <ul
+      class="flex gap-[1.5vh] landscape:gap-[4vh] flex-wrap items-center justify-center"
+    >
+      {
+        logosList.map((logo) => {
+          const logoSrc = logo[1]();
+          const logoName = logo[0].split("/")[4].slice(2, -4);
+
+          const blend = !logoName.includes("Monte Patria")
+            ? "mix-blend-multiply"
+            : "";
+
+          return (
+            <li class="group relative">
+              <p class="hidden landscape:block absolute -top-8 left-0 whitespace-nowrap px-2 py-1 rounded-lg text-sm pointer-events-none opacity-0 group-hover:opacity-100 bg-primary/40 text-white">
+                {logoName}
+              </p>
+              <Image
+                src={logoSrc}
+                alt={`Logo de ${logoName}`}
+                height={100}
+                class:list={[
+                  "w-fit h-[7vh] landscape:h-[8vh] aspect-auto",
+                  blend,
+                ]}
+              />
+            </li>
+          );
+        })
+      }
     </ul>
   </div>
   <div class="text-center">

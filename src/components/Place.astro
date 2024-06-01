@@ -61,7 +61,7 @@ if (!images[image])
         />
         <header>
           <h2
-            class="text-3xl leading-[30px] md:text-[4.8vh] md:leading-[4.8vh] font-bold text-primary"
+            class="text-3xl leading-[30px] landscape:text-[4.8vh] landscape:leading-[4.8vh] font-bold text-primary"
           >
             {name}
           </h2>
@@ -71,7 +71,7 @@ if (!images[image])
         </header>
         <section class="mt-2 grid gap-2 relative">
           <Paragraph
-            class="place-description h-full text-pretty text-primary/90 leading-tight xs:leading-tight md:leading-[2vh] text-sm xs:text-sm md:text-[1.6vh] md:line-clamp-none transition-[max-height] duration-300 overflow-y-hidden line-clamp-3"
+            class="place-description h-full text-pretty text-primary/90 leading-tight xs:leading-tight md:leading-[2vh] text-sm xs:text-sm md:text-[1.6vh] landscape:line-clamp-none transition-[max-height] duration-300 overflow-y-hidden line-clamp-3"
             text={`${description}`}
             decorator="i"
           />
@@ -122,6 +122,12 @@ if (!images[image])
 <style is:global>
   .medium-zoom-overlay {
     z-index: 100;
+  }
+
+  @media (orientation: landscape) {
+    .medium-zoom-overlay {
+      display: none;
+    }
   }
 
   .medium-zoom-image.medium-zoom-image {
