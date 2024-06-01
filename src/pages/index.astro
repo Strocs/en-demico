@@ -12,7 +12,7 @@ import { PLACES } from "@data/PLACES";
     <div class="swiper-wrapper">
       <HeroSection />
       {
-        Object.entries(PLACES).map(([id, place], i) => (
+        Object.entries(PLACES).map(([id, place]) => (
           // PÁGINAS VERTICALES
           <Place class="swiper-slide" data={place} id={id} />
         ))
