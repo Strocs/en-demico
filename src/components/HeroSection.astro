@@ -41,7 +41,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
               width={308}
               height={173}
               loading="eager"
-              alt=""
+              alt={`Ilustración del ${place.name} realizada por ${place.illustrator}`}
               class="w-full h-full aspect-[1920/1080] object-cover"
             />
           </figure>
