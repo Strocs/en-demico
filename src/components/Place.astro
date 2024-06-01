@@ -51,12 +51,13 @@ if (!images[image])
     >
       <div class="h-full">
         <Image
+          id=`image_${id}-mobile`
           src={images[image]()}
           width={1595}
           height={897}
           loading="eager"
           alt={`Ilustración de ${name} realizada por ${illustrator.name}`}
-          class="place-img-mobile landscape:hidden w-full h-fit aspect-[1920/1080] rounded-2xl shadow-lg object-cover mb-4 transition-[margin] duration-300"
+          class="place-img-mobile landscape:hidden w-full h-fit aspect-[1920/1080] rounded-xl shadow-lg object-cover mb-4 z-[200]"
         />
         <header>
           <h2
@@ -94,7 +95,7 @@ if (!images[image])
       </div>
       <YouTube
         id={video_id}
-        class="place-video aspect-video w-full self-end rounded-xl transition-[margin] duration-300"
+        class="place-video aspect-video w-full self-end rounded-xl md:rounded-2xl transition-[margin] duration-300"
         params="fs=0&modestbranding=1&showinfo=1"
       />
     </div>
@@ -118,9 +119,22 @@ if (!images[image])
   </div>
 </article>
 
+<style is:global>
+  .medium-zoom-overlay {
+    z-index: 100;
+  }
+
+  .medium-zoom-image.medium-zoom-image {
+    transition:
+      transform 0.3s cubic-bezier(0.2, 0, 0.2, 1),
+      margin 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+</style>
+
 <script>
   import { placesList } from "@utils/domReferences";
   import { readMore, readLess } from "@utils/utilities";
+  import mediumZoom from "medium-zoom";
 
   placesList.forEach((place) => {
     const btn = place.querySelector(".read-more-btn") as HTMLButtonElement;
@@ -144,5 +158,18 @@ if (!images[image])
     };
 
     btn.addEventListener("click", handleReadMoreButton);
+  });
+
+  placesList.forEach((place) => {
+    const image = place.querySelector(".place-img-mobile") as HTMLImageElement;
+
+    const zoom = mediumZoom(`#image_${place.id}-mobile`, {
+      background: "#282827cc",
+      margin: 16,
+    });
+
+    image.addEventListener("click", () => {
+      zoom.toggle();
+    });
   });
 </script>
