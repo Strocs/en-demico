@@ -9,7 +9,7 @@ interface ReadLess extends ReadMore {
 }
 
 
-function readMore({ image, text, btn, video }: ReadMore): void {
+export function readMore({ image, text, btn, video }: ReadMore): void {
   const imageRect = image.getBoundingClientRect();
   const maxHeight = text.firstElementChild?.getBoundingClientRect().height;
 
@@ -29,7 +29,7 @@ function readMore({ image, text, btn, video }: ReadMore): void {
   }
 }
 
-function readLess({ image, text, btn, video, minHeight }: ReadLess): void {
+export function readLess({ image, text, btn, video, minHeight }: ReadLess): void {
   btn.removeAttribute("data-isActive");
 
   window.requestAnimationFrame(() => {
@@ -43,5 +43,3 @@ function readLess({ image, text, btn, video, minHeight }: ReadLess): void {
 
   btn.innerText = "Continuar leyendo";
 }
-
-export { readMore, readLess };

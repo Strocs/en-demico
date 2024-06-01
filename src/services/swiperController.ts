@@ -68,7 +68,6 @@ verticalSwiper.on('slideChange', () => {
       ".place-description"
     ) as HTMLParagraphElement;
 
-
     const minHeight = text.style.getPropertyValue('--min-height')
 
     readLess({

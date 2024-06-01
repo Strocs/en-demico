@@ -38,24 +38,27 @@ export const Nav = () => {
 
   return (
     <nav id='header_nav' className='flex flex-col items-center gap-[1.6vh]'>
-      {Object.entries(PLACES).map(([id, { color, icon: Icon }], index) => {
-        const activeStyles =
-          index + 1 === activeSlide
-            ? `w-[8vh] ${tailwindColors[color].color}`
-            : 'w-[5vh] hover:scale-125 text-primary/30'
+      {Object.entries(PLACES).map(
+        ([id, { name, color, icon: Icon }], index) => {
+          const activeStyles =
+            index + 1 === activeSlide
+              ? `w-[8vh] ${tailwindColors[color].color}`
+              : 'w-[5vh] hover:scale-125 text-primary/30'
 
-        return (
-          <button
-            key={id}
-            onClick={e => handleClick(e, index)}
-            className={`duration-150 nav-icons rounded-full overflow-hidden 
+          return (
+            <button
+              key={id}
+              aria-label={`Ir a ${name}`}
+              onClick={e => handleClick(e, index)}
+              className={`duration-150 nav-icons rounded-full overflow-hidden 
                         ${activeStyles} 
                         ${tailwindColors[color].hover}`}
-          >
-            <Icon />
-          </button>
-        )
-      })}
+            >
+              <Icon />
+            </button>
+          )
+        }
+      )}
     </nav>
   )
 }
