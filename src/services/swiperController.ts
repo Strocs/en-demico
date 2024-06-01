@@ -38,6 +38,7 @@ placesList.forEach((place) => {
   // Add event listener to toggle swiper slide on image click
   placeImage?.addEventListener('click', () => {
     if (window.innerWidth < 768) return
+
     if (swiper.activeIndex === 0) {
       swiper.slideNext()
     } else {
@@ -47,7 +48,9 @@ placesList.forEach((place) => {
 });
 
 // Reset horizontal swipers when vertical swiper changes slides
-verticalSwiper.on('slideChange', () => {
+verticalSwiper.on('slideChange', (e) => {
+  if (window.innerWidth < window.innerHeight) return
+
   horizontalSwipers.forEach(swiper => {
     swiper.swiper.slideTo(0, 800)
   })
@@ -57,35 +60,29 @@ verticalSwiper.on('slideChange', () => {
 verticalSwiper.on('slideChange', () => {
   placesList.forEach(place => {
     const btn = place.querySelector(".read-more-btn") as HTMLButtonElement;
+    if (!btn.getAttribute('data-isActive')) return
 
-    if (btn.getAttribute('data-isActive')) {
-      const image = place.querySelector(".place-img-mobile") as HTMLImageElement;
-      const video = place.querySelector(".place-video") as HTMLVideoElement;
-      const text = place.querySelector(
-        ".place-description"
-      ) as HTMLParagraphElement;
+    const image = place.querySelector(".place-img-mobile") as HTMLImageElement;
+    const video = place.querySelector(".place-video") as HTMLVideoElement;
+    const text = place.querySelector(
+      ".place-description"
+    ) as HTMLParagraphElement;
 
 
-      const minHeight = text.style.getPropertyValue('--min-height')
+    const minHeight = text.style.getPropertyValue('--min-height')
 
-      readLess({
-        btn, image, video, text, minHeight
-      })
-    }
-
+    readLess({
+      btn, image, video, text, minHeight
+    })
   })
 })
 
 
-// Listen for the "slideChange" event on the swiperY instance
 verticalSwiper.on("slideChange", (e) => {
-  // Check if the current slide index is 0 (the first slide)
   if (e.realIndex === 0) {
-    // If it's the first slide, hide the header
     header.style.opacity = "0";
     header.style.pointerEvents = "none";
   } else {
-    // For all other slides, show the header
     header.style.opacity = "1";
     header.style.pointerEvents = "auto";
   }

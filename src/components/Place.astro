@@ -130,16 +130,16 @@ if (!images[image])
       ".place-description"
     ) as HTMLParagraphElement;
 
-    const minHeight = text.getBoundingClientRect().height;
+    const minHeight = `${text.getBoundingClientRect().height}px`;
 
-    text.style.setProperty("--min-height", `${minHeight}px`);
-    text.style.maxHeight = `${minHeight}px`;
+    text.style.setProperty("--min-height", minHeight);
+    text.style.maxHeight = minHeight;
 
     const handleReadMoreButton = () => {
       if (!btn.getAttribute("data-isActive")) {
         readMore({ btn, image, video, text });
       } else {
-        readLess({ btn, image, video, text, minHeight: `${minHeight}px` });
+        readLess({ btn, image, video, text, minHeight });
       }
     };
 
