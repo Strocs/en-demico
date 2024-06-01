@@ -31,23 +31,23 @@ export const Nav = () => {
   }
 
   useEffect(() => {
-    verticalSwiper.on('slideChange', () =>
-      setActiveSlide(verticalSwiper.realIndex)
-    )
+    const handleSlideChange = () => setActiveSlide(verticalSwiper.realIndex)
+    verticalSwiper.on('slideChange', handleSlideChange)
+    return () => verticalSwiper.off('slideChange', handleSlideChange)
   }, [])
 
   return (
     <nav id='header_nav' className='flex flex-col items-center gap-[1.6vh]'>
-      {Object.entries(PLACES).map(([id, { color, icon: Icon }], i) => {
+      {Object.entries(PLACES).map(([id, { color, icon: Icon }], index) => {
         const activeStyles =
-          i + 1 === activeSlide
+          index + 1 === activeSlide
             ? `w-[8vh] ${tailwindColors[color].color}`
             : 'w-[5vh] hover:scale-125 text-primary/30'
 
         return (
           <button
-            onClick={e => handleClick(e, i)}
             key={id}
+            onClick={e => handleClick(e, index)}
             className={`duration-150 nav-icons rounded-full overflow-hidden 
                         ${activeStyles} 
                         ${tailwindColors[color].hover}`}

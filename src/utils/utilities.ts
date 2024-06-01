@@ -10,29 +10,37 @@ interface ReadLess extends ReadMore {
 
 
 function readMore({ image, text, btn, video }: ReadMore): void {
-  const imageHeight = image.getBoundingClientRect();
+  const imageRect = image.getBoundingClientRect();
   const maxHeight = text.firstElementChild?.getBoundingClientRect().height;
 
   if (maxHeight !== undefined) {
+    const setMargin = `-${imageRect.height + imageRect.y}px`
+
     btn.setAttribute("data-isActive", "true");
-    image.style.marginTop = `-${imageHeight.height + imageHeight.y}px`;
-    video.style.marginBottom = `-${imageHeight.height + imageHeight.y}px`;
-    text.classList.remove("line-clamp-3");
+
     window.requestAnimationFrame(() => {
+      image.style.marginTop = setMargin;
+      video.style.marginBottom = setMargin;
+      text.classList.remove("line-clamp-3");
       text.style.maxHeight = `${maxHeight}px`;
     });
+
     btn.innerText = "Volver atrás";
   }
 }
 
 function readLess({ image, text, btn, video, minHeight }: ReadLess): void {
   btn.removeAttribute("data-isActive");
-  image.style.marginTop = "0px";
-  video.style.marginBottom = "0px";
-  text.style.maxHeight = minHeight;
-  setTimeout(() => {
-    text.classList.add("line-clamp-3");
-  }, 300);
+
+  window.requestAnimationFrame(() => {
+    image.style.marginTop = '0px';
+    video.style.marginBottom = '0px';
+    text.style.maxHeight = minHeight;
+    setTimeout(() => {
+      text.classList.add("line-clamp-3");
+    }, 300);
+  });
+
   btn.innerText = "Continuar leyendo";
 }
 
