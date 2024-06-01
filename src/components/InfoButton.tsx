@@ -13,17 +13,24 @@ export const InfoButton = ({ id }: Props) => {
   const [showModal, setShowModal] = useState<boolean>(false)
 
   useEffect(() => {
-    verticalSwiper.on('slideChange', () => {
-      setShowModal(false)
-    })
+    const hideModal = () => setShowModal(false)
+    verticalSwiper.on('slideChange', hideModal)
+    return () => {
+      verticalSwiper.off('slideChange', hideModal)
+    }
   }, [])
 
   useEffect(() => {
+    const hideModal = () => setShowModal(false)
     horizontalSwipers.forEach(({ swiper }) => {
-      swiper.on('slideChange', () => {
-        setShowModal(false)
-      })
+      swiper.on('slideChange', hideModal)
     })
+
+    return () => {
+      horizontalSwipers.forEach(({ swiper }) => {
+        swiper.off('slideChange', hideModal)
+      })
+    }
   }, [])
 
   return (
