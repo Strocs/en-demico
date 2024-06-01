@@ -1,6 +1,7 @@
 import Swiper from "swiper";
 import { Navigation, Mousewheel } from "swiper/modules";
-import { placesList, header, logo, placesCardsList, nav } from "./domReferences";
+import { placesList, header, logo, placesCardsList } from "@utils/domReferences";
+import { readLess } from "@utils/utilities";
 
 // Initialize the vertical swiper
 export const verticalSwiper = new Swiper(".swiper-main", {
@@ -52,6 +53,29 @@ verticalSwiper.on('slideChange', () => {
   })
 })
 
+// Reset read less when vertical swiper changes slides
+verticalSwiper.on('slideChange', () => {
+  placesList.forEach(place => {
+    const btn = place.querySelector(".read-more-btn") as HTMLButtonElement;
+
+    if (btn.getAttribute('data-isActive')) {
+      const image = place.querySelector(".place-img-mobile") as HTMLImageElement;
+      const video = place.querySelector(".place-video") as HTMLVideoElement;
+      const text = place.querySelector(
+        ".place-description"
+      ) as HTMLParagraphElement;
+
+
+      const minHeight = text.style.getPropertyValue('--min-height')
+
+      readLess({
+        btn, image, video, text, minHeight
+      })
+    }
+
+  })
+})
+
 
 // Listen for the "slideChange" event on the swiperY instance
 verticalSwiper.on("slideChange", (e) => {
@@ -80,3 +104,10 @@ placesCardsList.forEach((card, i) =>
     verticalSwiper.slideToLoop(i + 1, 0, false);
   })
 );
+
+
+
+// TODO: Open image viewer on click
+// TODO: Reset image viewer on slide change
+// TODO: pause video on slide change 
+

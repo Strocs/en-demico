@@ -119,7 +119,8 @@ if (!images[image])
 </article>
 
 <script>
-  import { placesList } from "@services/domReferences";
+  import { placesList } from "@utils/domReferences";
+  import { readMore, readLess } from "@utils/utilities";
 
   placesList.forEach((place) => {
     const btn = place.querySelector(".read-more-btn") as HTMLButtonElement;
@@ -130,40 +131,18 @@ if (!images[image])
     ) as HTMLParagraphElement;
 
     const minHeight = text.getBoundingClientRect().height;
-    const maxHeight = text.firstElementChild?.getBoundingClientRect().height;
 
+    text.style.setProperty("--min-height", `${minHeight}px`);
     text.style.maxHeight = `${minHeight}px`;
 
     const handleReadMoreButton = () => {
       if (!btn.getAttribute("data-isActive")) {
-        readMore();
+        readMore({ btn, image, video, text });
       } else {
-        readLess();
+        readLess({ btn, image, video, text, minHeight: `${minHeight}px` });
       }
     };
 
-    function readMore() {
-      btn.setAttribute("data-isActive", "true");
-      image.classList.add("-mt-[11.5rem]");
-      video.classList.add("-mb-[11.5rem]");
-      text.classList.remove("line-clamp-3");
-      window.requestAnimationFrame(() => {
-        text.style.maxHeight = `${maxHeight}px`;
-      });
-      btn.innerText = "Volver atrás";
-    }
-
-    function readLess() {
-      btn.removeAttribute("data-isActive");
-      image.classList.remove("-mt-[11.5rem]");
-      video.classList.remove("-mb-[11.5rem]");
-      text.style.maxHeight = `${minHeight}px`;
-      setTimeout(() => {
-        text.classList.add("line-clamp-3");
-      }, 300);
-      btn.innerText = "Continuar leyendo";
-    }
-
-    btn?.addEventListener("click", handleReadMoreButton);
+    btn.addEventListener("click", handleReadMoreButton);
   });
 </script>
