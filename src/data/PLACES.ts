@@ -138,7 +138,7 @@ export const PLACES: Places = {
   tricahue: {
     name: 'Hábitat del Loro Tricahue',
     place: 'Valle del Limarí, Ovalle',
-    description: 'Lo único cierto en esta vida es que mañana volverán a salir de la oscuridad de sus cuevas para regalar a este cielo árido una vez más un instante de color y algarabía. En la mañana se van y en la tarde vuelven como un reloj, yo los vi hacer nacer y morir los días',
+    description: 'Lo único cierto en esta vida es que mañana volverán a salir de la oscuridad de sus cuevas para regalar a este cielo árido una vez más un instante de color y algarabía. En la mañana se van y en la tarde vuelven como un reloj, yo los vi hacer nacer y morir los días.',
     icon: LoroTricahueIcon,
     color: '#6d8b4b',
     latitude: 1,
@@ -150,7 +150,7 @@ export const PLACES: Places = {
   petroglifos: {
     name: 'Petroglifos Ancestrales',
     place: 'Valle del Encanto, Ovalle',
-    description: 'Mientras observaba un documental del Valle del Encanto me detuvo un momento, una imagen pétrea... Desde que la vi no ha podido salir de mi mente... He preguntado a algunos visitantes frecuentes del Valle del Encanto y me han dicho que nunca la han visto, también consulté libros para poder entender mejor el significado de sus figuras y no hay registro de esta, o al menos no me he podido topar con ellos aún, quizás es un llamado a imaginar, imaginar un ave quizás, una serpiente, ¿serán guanacos o un zorro?, ¿será un gran camarón?. Entonces en momentos del día y la noche ...desde la ignorancia y la ingenuidad intento descifrar qué animales fueron los dichosos en habitar estas tierras hace tanto tiempo atrás y ser la inspiración de aquellos que compartimos esta extraña afición por la fauna, la naturaleza y esas cosas',
+    description: 'Mientras observaba un documental del Valle del Encanto me detuvo un momento, una imagen pétrea... Desde que la vi no ha podido salir de mi mente... He preguntado a algunos visitantes frecuentes del Valle del Encanto y me han dicho que nunca la han visto, también consulté libros para poder entender mejor el significado de sus figuras y no hay registro de esta, o al menos no me he podido topar con ellos aún, quizás es un llamado a imaginar, imaginar un ave quizás, una serpiente, ¿serán guanacos o un zorro?, ¿será un gran camarón?. Entonces en momentos del día y la noche ...desde la ignorancia y la ingenuidad intento descifrar qué animales fueron los dichosos en habitar estas tierras hace tanto tiempo atrás y ser la inspiración de aquellos que compartimos esta extraña afición por la fauna, la naturaleza y esas cosas.',
     icon: ValleEncantoIcon,
     color: '#57331d',
     latitude: 1,
