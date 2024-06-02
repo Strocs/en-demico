@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import { YouTube } from "astro-embed";
 import type { Place } from "@customTypes/types";
 import Paragraph from "./Paragraph.astro";
+import { SITE } from "@data/SITE";
 
 interface Props {
   class?: string;
@@ -96,7 +97,7 @@ if (!images[image])
       <YouTube
         id={video_id}
         class="place-video aspect-video w-full self-end rounded-xl md:rounded-2xl transition-[margin] duration-300"
-        params="fs=0&modestbranding=1&showinfo=1"
+        params=`fs=1&modestbranding=1&showinfo=1&rel=0&origin=${SITE.URL}`
       />
     </div>
     <figure
@@ -150,6 +151,7 @@ if (!images[image])
       ".place-description"
     ) as HTMLParagraphElement;
 
+    // Read more
     const minHeight = `${text.getBoundingClientRect().height}px`;
 
     text.style.setProperty("--min-height", minHeight);
@@ -164,11 +166,8 @@ if (!images[image])
     };
 
     btn.addEventListener("click", handleReadMoreButton);
-  });
 
-  placesList.forEach((place) => {
-    const image = place.querySelector(".place-img-mobile") as HTMLImageElement;
-
+    // Image zoom
     const zoom = mediumZoom(`#image_${place.id}-mobile`, {
       background: "#282827cc",
       margin: 16,
