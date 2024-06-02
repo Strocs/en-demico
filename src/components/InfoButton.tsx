@@ -53,8 +53,7 @@ export const InfoButton = ({ id }: Props) => {
           </div>
           <div className='bg-blue-800 p-[2vh] z-20 h-fit w-[40vh] rounded-lg absolute left-[80vh] bottom-[1vh]'>
             <p className='text-[1.5vh] text-secondary'>
-              Haz click en la imagen o haz un swipe a la derecha para verla
-              mejor
+              Haz click en la imagen o desliza hacia la derecha para verla mejor
             </p>
           </div>
         </>

@@ -21,11 +21,11 @@ const logosList = Object.entries(logos);
   ]}
 >
   <div>
-    <p
+    <!-- <p
       class="text-center mb-1 md:mb-3 landscape:mb-2 landscape:2xl:mb-6 font-medium text-base md:text-lg"
     >
       Proyecto financiado por:
-    </p>
+    </p> -->
     <ul
       class="flex gap-[1.5vh] landscape:gap-[4vh] flex-wrap items-center justify-center"
     >
@@ -47,6 +47,7 @@ const logosList = Object.entries(logos);
                 src={logoSrc}
                 alt={`Logo de ${logoName}`}
                 height={100}
+                loading="eager"
                 class:list={[
                   "w-fit h-[7vh] landscape:h-[8vh] aspect-auto",
                   blend,

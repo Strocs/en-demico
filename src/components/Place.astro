@@ -105,13 +105,13 @@ if (!images[image])
     >
       <div
         id={`${id}-image`}
-        class="md:cursor-pointer w-fit h-fit landscape:h-full mt-[40%] landscape:mt-0"
+        class="md:cursor-pointer w-fit h-fit landscape:h-full mt-[40%] landscape:mt-0 hover:scale-[1.01] transition-[transform] duration-300"
       >
         <Image
           src={images[image]()}
           width={1595}
           height={897}
-          loading="eager"
+          loading="lazy"
           alt={`Ilustración de ${name} realizada por ${illustrator.name}`}
           class="w-full h-fit md:h-fit xl:h-full aspect-[1920/1080] pointer-events-none rounded-2xl shadow-lg object-cover"
         />
