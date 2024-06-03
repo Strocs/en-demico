@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config'
 import tailwind from '@astrojs/tailwind'
 import sitemap from '@astrojs/sitemap'
-import vercel from '@astrojs/vercel/serverless'
+import vercel from '@astrojs/vercel/static'
 
 import react from '@astrojs/react'
 
@@ -9,6 +9,6 @@ import react from '@astrojs/react'
 export default defineConfig({
   integrations: [tailwind(), sitemap(), react()],
   site: 'https://en-demico.cl/',
-  output: 'server',
+  output: 'static',
   adapter: vercel()
 })
