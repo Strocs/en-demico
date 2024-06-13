@@ -2,7 +2,7 @@ import type { Artists } from "@customTypes/types";
 
 export const ARTISTS: Artists = {
   evincentv: {
-    name: 'e.vincent',
+    name: 'Vincent Aus',
     real_name: 'Vincent Gedeon Gatica Espinoza',
     social_media: 'https://www.instagram.com/e.vincent.v'
   },
