@@ -88,7 +88,8 @@ verticalSwiper.on('slideChange', e => {
 
     if (!!video.querySelector('iframe')) {
       const player = await video.getYTPlayer()
-      if (player.getPlayerState() === 1) {
+
+      if (player?.getPlayerState() === 1) {
         player.pauseVideo()
       }
     }

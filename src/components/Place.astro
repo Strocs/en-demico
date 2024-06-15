@@ -96,8 +96,9 @@ if (!images[image])
       </div>
       <YouTube
         id={video_id}
+        js-api
         class="place-video aspect-video w-full self-end rounded-xl md:rounded-2xl transition-[margin] duration-300"
-        params=`fs=1&modestbranding=1&showinfo=1&rel=0&origin=${SITE.URL}`
+        params=`fs=1&modestbranding=1&showinfo=1&rel=0&enablejsap=1&origin=${SITE.URL}`
       />
     </div>
     <figure
