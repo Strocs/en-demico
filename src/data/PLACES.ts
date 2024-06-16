@@ -23,7 +23,7 @@ export const PLACES: Places = {
     latitude: 1,
     longitude: 1,
     image: '/src/assets/guayacan.png',
-    video_id: 'Gw0mzZD_cAo',
+    video_id: 'FZMORsuQqK8',
     illustrator: ARTISTS.evincentv,
   },
   culebron: {
@@ -35,7 +35,7 @@ export const PLACES: Places = {
     latitude: 1,
     longitude: 1,
     image: '/src/assets/culebron-como-deberia-verse.png',
-    video_id: 'Gw0mzZD_cAo',
+    video_id: 'HkeovlLfISU',
     illustrator: ARTISTS.evincentv,
   },
   chango: {
@@ -47,7 +47,7 @@ export const PLACES: Places = {
     latitude: 1,
     longitude: 1,
     image: '/src/assets/chango-completo.png',
-    video_id: 'Gw0mzZD_cAo',
+    video_id: 'dIkLePdeqwg',
     illustrator: ARTISTS.catana,
   },
   humboldt: {
@@ -59,7 +59,7 @@ export const PLACES: Places = {
     latitude: 1,
     longitude: 1,
     image: '/src/assets/humboldt-completo.png',
-    video_id: 'Gw0mzZD_cAo',
+    video_id: 'sr9OTeU62Ks',
     illustrator: ARTISTS.catana,
   },
   gabriela: {
@@ -71,7 +71,7 @@ export const PLACES: Places = {
     latitude: 1,
     longitude: 1,
     image: '/src/assets/Gabriela-Mistral.png',
-    video_id: 'Gw0mzZD_cAo',
+    video_id: 'zNETbVQcLwc',
     illustrator: ARTISTS.ninopan,
   },
   chinchilla: {
@@ -83,7 +83,7 @@ export const PLACES: Places = {
     latitude: 1,
     longitude: 1,
     image: '/src/assets/chinchillas-final.png',
-    video_id: 'Gw0mzZD_cAo',
+    video_id: 'KQdmBBYwBHY',
     illustrator: ARTISTS.ninopan,
   },
   diaguita: {
@@ -95,7 +95,7 @@ export const PLACES: Places = {
     latitude: 1,
     longitude: 1,
     image: '/src/assets/pueblo-diaguita-completo.jpg',
-    video_id: 'Gw0mzZD_cAo',
+    video_id: 'Le0Bmp2dE80',
     illustrator: ARTISTS.psapiains,
   },
 
@@ -108,7 +108,7 @@ export const PLACES: Places = {
     latitude: 1,
     longitude: 1,
     image: '/src/assets/Observatorio-natural-de-estrellas.jpg',
-    video_id: 'Gw0mzZD_cAo',
+    video_id: 'cfJ-JBOMK0g',
     illustrator: ARTISTS.psapiains,
   },
   caprina: {
@@ -120,7 +120,7 @@ export const PLACES: Places = {
     latitude: 1,
     longitude: 1,
     image: '/src/assets/trashumancia.jpeg',
-    video_id: 'Gw0mzZD_cAo',
+    video_id: 'WcYAsR2by4E',
     illustrator: ARTISTS.blanquis,
   },
   bosque: {
@@ -132,7 +132,7 @@ export const PLACES: Places = {
     latitude: 1,
     longitude: 1,
     image: '/src/assets/fray-jorge.jpg',
-    video_id: 'Gw0mzZD_cAo',
+    video_id: 'X_ju-5h_fu8',
     illustrator: ARTISTS.blanquis,
   },
   tricahue: {
@@ -144,7 +144,7 @@ export const PLACES: Places = {
     latitude: 1,
     longitude: 1,
     image: '/src/assets/tricahues-limarí.png',
-    video_id: 'Gw0mzZD_cAo',
+    video_id: 'EVg-0b4Ha2A',
     illustrator: ARTISTS.camilaguaman,
   },
   petroglifos: {
@@ -156,7 +156,7 @@ export const PLACES: Places = {
     latitude: 1,
     longitude: 1,
     image: '/src/assets/petroglifos-VDE-limarí.png',
-    video_id: 'Gw0mzZD_cAo',
+    video_id: 'ytl69Vr6e18',
     illustrator: ARTISTS.camilaguaman,
   },
 }
