@@ -13,6 +13,11 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+pnpm-lock.yaml
+npm-lock.yaml
+yarn.lock
+bun.lockb
+
 # environment variables
 .env
 .env.production
