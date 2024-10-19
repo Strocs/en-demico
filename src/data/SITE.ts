@@ -6,10 +6,7 @@ export const SITE = {
     light_mode: 'favicon_black.svg'
   },
   URL: 'https://en-demico.cl',
-  OG_image: {
-    dark_mode: 'og_image_dark.png',
-    light_mode: 'og_image_light.png'
-  },
+  OG_image: 'og_image-light.png',
   primary_colors: [
     '#6d8b4b',
     '#aabb51',
